@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
-import { Link, useParams, useHistory, Redirect } from "react-router-dom";
-import UploadImage from "components/UploadImage";
-import FormMessage from "components/FormMessage";
-import setFormObj from "components/FormUtils";
-import { useUserState } from "contexts/UserContext";
-import { useSaveFilm, useEditFilm } from "hooks/films";
+import { useState, useEffect } from 'react';
+import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
+import UploadImage from 'components/UploadImage';
+import FormMessage from 'components/FormMessage';
+import setFormObj from 'components/FormUtils';
+import { useUserState } from 'contexts/UserContext';
+import { useSaveFilm, useEditFilm } from 'hooks/films';
 
 const initialData = {
   _id: null,
-  title: "",
-  description: "",
-  director: "",
-  duration: "",
-  price: "",
-  img: "",
+  title: '',
+  description: '',
+  director: '',
+  duration: '',
+  price: '',
+  img: '',
   featured: false,
 };
 
@@ -25,7 +25,7 @@ const FilmForm = (props) => {
   const { _id } = useParams();
 
   const user = useUserState();
-  const isAdmin = user.token && user.role === "admin";
+  const isAdmin = user.token && user.role === 'admin';
 
   const film = useEditFilm(_id);
 
@@ -40,22 +40,22 @@ const FilmForm = (props) => {
 
   const updatePhoto = (img) => {
     setData((data) => ({ ...data, img }));
-    setErrors((errors) => ({ ...errors, img: "" }));
+    setErrors((errors) => ({ ...errors, img: '' }));
   };
 
   const validate = (data) => {
     const errors = {};
-    if (!data.title) errors.title = "Title cannot be blank";
-    if (!data.description) errors.description = "description cannot be blank";
-    if (!data.img) errors.img = "img cannot be blank";
-    if (!data.director) errors.director = "director cannot be blank";
-    if (!data.duration) errors.duration = "duration cannot be blank";
-    if (!data.price) errors.price = "price cannot be blank";
+    if (!data.title) errors.title = 'Title cannot be blank';
+    if (!data.description) errors.description = 'description cannot be blank';
+    if (!data.img) errors.img = 'img cannot be blank';
+    if (!data.director) errors.director = 'director cannot be blank';
+    if (!data.duration) errors.duration = 'duration cannot be blank';
+    if (!data.price) errors.price = 'price cannot be blank';
 
     if (parseInt(data.price) <= 0)
-      errors.price = "price cannot be negative value or 0";
+      errors.price = 'price cannot be negative value or 0';
     if (parseInt(data.duration) <= 0)
-      errors.duration = "price cannot be negative value or 0";
+      errors.duration = 'price cannot be negative value or 0';
     return errors;
   };
 
@@ -68,7 +68,7 @@ const FilmForm = (props) => {
 
     if (Object.keys(errors).length === 0) {
       mutation.mutate(data);
-      history.push("/films");
+      history.push('/films');
     }
   };
 
@@ -84,7 +84,7 @@ const FilmForm = (props) => {
           {/* ten column START */}
           <div className="ten wide column">
             {/* title START */}
-            <div className={`field ${errors.title ? "error" : ""}`}>
+            <div className={`field ${errors.title ? 'error' : ''}`}>
               <label htmlFor="title">Film title</label>
               <input
                 value={data.title}
@@ -98,7 +98,7 @@ const FilmForm = (props) => {
             </div>
             {/* title END */}
             {/*  img START */}
-            <div className={`field img-grid ${errors.img ? "error" : ""}`}>
+            <div className={`field img-grid ${errors.img ? 'error' : ''}`}>
               <label htmlFor="img">Image</label>
               <input
                 value={data.img}
@@ -112,7 +112,7 @@ const FilmForm = (props) => {
             {/*  description START */}
             <div
               className={`column row field ${
-                errors.description ? "error" : ""
+                errors.description ? 'error' : ''
               }`}
             >
               <label htmlFor="description">Film description</label>
@@ -142,7 +142,7 @@ const FilmForm = (props) => {
 
         <div className="three column row">
           {/* director START */}
-          <div className={`column field ${errors.director ? "error" : ""}`}>
+          <div className={`column field ${errors.director ? 'error' : ''}`}>
             <label htmlFor="director">Director</label>
             <input
               value={data.director}
@@ -157,7 +157,7 @@ const FilmForm = (props) => {
           {/* director END */}
 
           {/* duration START */}
-          <div className={`column field ${errors.duration ? "error" : ""}`}>
+          <div className={`column field ${errors.duration ? 'error' : ''}`}>
             <label htmlFor="duration">Duration</label>
             <input
               value={data.duration}
@@ -172,7 +172,7 @@ const FilmForm = (props) => {
           {/* duration END */}
 
           {/* price START */}
-          <div className={`column field ${errors.price ? "error" : ""}`}>
+          <div className={`column field ${errors.price ? 'error' : ''}`}>
             <label htmlFor="price">Price</label>
             <input
               value={data.price}

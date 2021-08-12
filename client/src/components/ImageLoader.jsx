@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const ImageLoader = ({ src, fallbackImg, alt, ...rest }) => {
   const onError = ({ target }) => (target.src = fallbackImg);

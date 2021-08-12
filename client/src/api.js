@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 const api = {
   films: {
-    fetchAll: () => axios.get("/api/authfilms").then((res) => res.data.films),
+    fetchAll: () => axios.get('/api/authfilms').then((res) => res.data.films),
     create: (film) =>
-      axios.post("/api/authfilms", { film }).then((res) => res.data.film),
+      axios.post('/api/authfilms', { film }).then((res) => res.data.film),
     update: (film) =>
       axios
         .put(`/api/authfilms/${film._id}`, { film })
@@ -14,9 +14,9 @@ const api = {
       axios.get(`/api/authfilms/${id}`).then((res) => res.data.film),
   },
   users: {
-    create: (user) => axios.post("/api/users", { user }),
+    create: (user) => axios.post('/api/users', { user }),
     login: (credentials) =>
-      axios.post("/api/auth", { credentials }).then((res) => res.data.token),
+      axios.post('/api/auth', { credentials }).then((res) => res.data.token),
   },
 };
 

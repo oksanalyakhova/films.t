@@ -1,9 +1,9 @@
-import { memo } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import Featured from "components/Featured";
-import FilmCardButtons from "pages/FilmsPage/components/FilmCardButtons";
-import { useUserState } from "contexts/UserContext";
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Featured from 'components/Featured';
+import FilmCardButtons from 'pages/FilmsPage/components/FilmCardButtons';
+import { useUserState } from 'contexts/UserContext';
 
 const FilmCard = ({ film }) => {
   const user = useUserState();
@@ -35,8 +35,8 @@ const FilmCard = ({ film }) => {
         </div>
       </div>
 
-      {user.token && user.role === "admin" && <FilmCardButtons film={film} />}
-      {user.token && user.role === "user" && actionUser}
+      {user.token && user.role === 'admin' && <FilmCardButtons film={film} />}
+      {user.token && user.role === 'user' && actionUser}
     </div>
   );
 };

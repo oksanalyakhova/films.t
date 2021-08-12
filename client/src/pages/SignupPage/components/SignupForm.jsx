@@ -1,13 +1,13 @@
-import { Component } from "react";
-import { Link } from "react-router-dom";
-import isEmail from "validator/lib/isEmail";
-import equals from "validator/lib/equals";
-import FormMessage from "components/FormMessage";
+import { Component } from 'react';
+import { Link } from 'react-router-dom';
+import isEmail from 'validator/lib/isEmail';
+import equals from 'validator/lib/equals';
+import FormMessage from 'components/FormMessage';
 
 const initialData = {
-  email: "",
-  password: "",
-  passwordConfirmation: "",
+  email: '',
+  password: '',
+  passwordConfirmation: '',
 };
 
 class SignupForm extends Component {
@@ -19,16 +19,16 @@ class SignupForm extends Component {
   handleChange = (e) =>
     this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value },
-      errors: { ...this.state.errors, [e.target.name]: "" },
+      errors: { ...this.state.errors, [e.target.name]: '' },
     });
 
   validate(data) {
     const errors = {};
-    if (!isEmail(data.email)) errors.email = "Email is not correct";
+    if (!isEmail(data.email)) errors.email = 'Email is not correct';
 
-    if (!data.password) errors.password = "Password cannot be blank";
+    if (!data.password) errors.password = 'Password cannot be blank';
     if (!equals(data.password, data.passwordConfirmation))
-      errors.password = "password is no equals to password confirmation";
+      errors.password = 'password is no equals to password confirmation';
     return errors;
   }
 
@@ -48,10 +48,10 @@ class SignupForm extends Component {
 
   render() {
     const { data, errors, loading } = this.state;
-    const cls = loading ? "ui form loading" : "ui form";
+    const cls = loading ? 'ui form loading' : 'ui form';
     return (
       <form className={cls} onSubmit={this.handleSubmit}>
-        <div className={errors.email ? "error field" : "field"}>
+        <div className={errors.email ? 'error field' : 'field'}>
           <label htmlFor="email">Email</label>
           <input
             value={data.email}
@@ -64,7 +64,7 @@ class SignupForm extends Component {
           {errors.email && <FormMessage>{errors.email}</FormMessage>}
         </div>
 
-        <div className={errors.password ? "error field" : "field"}>
+        <div className={errors.password ? 'error field' : 'field'}>
           <label htmlFor="password">Password</label>
           <input
             value={data.password}
@@ -77,7 +77,7 @@ class SignupForm extends Component {
           {errors.password && <FormMessage>{errors.password}</FormMessage>}
         </div>
 
-        <div className={errors.passwordConfirmation ? "error field" : "field"}>
+        <div className={errors.passwordConfirmation ? 'error field' : 'field'}>
           <label htmlFor="passwordConfirmation">Password Confirmation</label>
           <input
             value={data.passwordConfirmation}

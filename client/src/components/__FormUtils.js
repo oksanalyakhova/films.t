@@ -2,7 +2,7 @@ const setValue = {
   text: (v) => v,
   number: (v) => {
     let value = parseFloat(v);
-    value = isNaN(value) || value === 0 ? "" : Math.abs(value);
+    value = isNaN(value) || value === 0 ? '' : Math.abs(value);
     return value;
   },
   checkbox: (v) => v,
@@ -14,7 +14,7 @@ const setValue = {
 const setFormObj =
   (data, fn) =>
   ({ target }) => {
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     return fn({ ...data, [target.name]: setValue[target.type](value) });
   };
 

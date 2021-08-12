@@ -1,7 +1,7 @@
-import { useHistory } from "react-router-dom";
-import LoginForm from "pages/LoginPage/components/LoginForm";
-import api from "api";
-import { useLogin } from "contexts/UserContext";
+import { useHistory } from 'react-router-dom';
+import LoginForm from 'pages/LoginPage/components/LoginForm';
+import api from 'api';
+import { useLogin } from 'contexts/UserContext';
 
 const LoginPage = (props) => {
   const history = useHistory();
@@ -10,7 +10,7 @@ const LoginPage = (props) => {
   const submit = (user) =>
     api.users.login(user).then((token) => {
       login(token);
-      history.push("/films");
+      history.push('/films');
     });
 
   return (

@@ -1,19 +1,19 @@
-const express = require("express");
-require("dotenv").config();
-const url = require("url");
-const multer = require("multer");
+const express = require('express');
+require('dotenv').config();
+const url = require('url');
+const multer = require('multer');
 
 const router = express.Router();
 
-const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
-const LIMIT_FILE_TYPES = "LIMIT_FILE_TYPES";
-const LIMIT_FILE_SIZE = "LIMIT_FILE_SIZE";
+const LIMIT_FILE_TYPES = 'LIMIT_FILE_TYPES';
+const LIMIT_FILE_SIZE = 'LIMIT_FILE_SIZE';
 const MAX_SIZE = 400000;
 
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./images");
+    cb(null, './images');
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -36,11 +36,11 @@ const upload = multer({
   limits: {
     fileSize: MAX_SIZE,
   },
-}).single("file");
+}).single('file');
 
 function errorMiddleware(error, req, res, next) {
   if (error.code === LIMIT_FILE_TYPES) {
-    res.status(422).json({ error: "only images allowed" });
+    res.status(422).json({ error: 'only images allowed' });
     return;
   }
   if (error.code === LIMIT_FILE_SIZE) {
@@ -54,13 +54,13 @@ function errorMiddleware(error, req, res, next) {
 function fullUrl(req) {
   return url.format({
     protocol: req.protocol,
-    host: req.get("host"),
+    host: req.get('host'),
   });
 }
 
-router.post("/", upload, errorMiddleware, async (req, res) => {
+router.post('/', upload, errorMiddleware, async (req, res) => {
   const fileName = req.file.filename;
-  const file = fullUrl(req) + "/" + req.file.filename;
+  const file = fullUrl(req) + '/' + req.file.filename;
   res.json({ file });
 });
 

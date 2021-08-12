@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { AppProviders } from "contexts";
-import App from "App";
-import "semantic-ui-css/semantic.min.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { AppProviders } from 'contexts';
+import App from 'App';
+import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,5 +10,5 @@ ReactDOM.render(
       <App />
     </AppProviders>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

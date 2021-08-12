@@ -1,19 +1,19 @@
-import { lazy, Suspense, useState } from "react";
-import { Route } from "react-router-dom";
-import TopNavigation from "components/TopNavigation";
-import HomePage from "pages/HomePage";
-import { FullSpinner } from "styles/app";
-import { useUserState } from "contexts/UserContext";
+import { lazy, Suspense, useState } from 'react';
+import { Route } from 'react-router-dom';
+import TopNavigation from 'components/TopNavigation';
+import HomePage from 'pages/HomePage';
+import { FullSpinner } from 'styles/app';
+import { useUserState } from 'contexts/UserContext';
 
-const FilmsPage = lazy(() => import("pages/FilmsPage"));
-const SignupPage = lazy(() => import("pages/SignupPage"));
-const LoginPage = lazy(() => import("pages/LoginPage"));
+const FilmsPage = lazy(() => import('pages/FilmsPage'));
+const SignupPage = lazy(() => import('pages/SignupPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
 const FilmDetails = lazy(() =>
-  import("pages/FilmsPage/components/FilmDetails")
+  import('pages/FilmsPage/components/FilmDetails')
 );
 
 const App = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const user = useUserState();
 
   return (
@@ -23,7 +23,7 @@ const App = () => {
 
         {message && (
           <div className="ui info message">
-            <i onClick={() => setMessage("")} className="close icon" />
+            <i onClick={() => setMessage('')} className="close icon" />
             {message}
           </div>
         )}

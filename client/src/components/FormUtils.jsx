@@ -4,11 +4,11 @@ const setValue = {
   email: (v) => v,
   password: (v) => v,
   textarea: (v) => v,
-  "select-one": (v) => v,
-  "select-multiple": (v) => v.map((o) => o.value),
+  'select-one': (v) => v,
+  'select-multiple': (v) => v.map((o) => o.value),
   number: (v) => {
     let value = parseFloat(v);
-    value = isNaN(value) || value === "0" ? "" : Math.abs(value);
+    value = isNaN(value) || value === '0' ? '' : Math.abs(value);
     return value;
   },
 };
@@ -18,9 +18,9 @@ const setFormObj =
   ({ target }) => {
     const type = target.type;
     let value =
-      type === "checkbox"
+      type === 'checkbox'
         ? target.checked
-        : type === "select-multiple"
+        : type === 'select-multiple'
         ? Array.from(target.selectedOptions)
         : target.value;
 

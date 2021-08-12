@@ -1,6 +1,6 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import cases from "jest-in-case";
-import useCounter from "counter/useCounter";
+import { renderHook, act } from '@testing-library/react-hooks';
+import cases from 'jest-in-case';
+import useCounter from 'counter/useCounter';
 
 /* cases(
     "Name",
@@ -9,7 +9,7 @@ import useCounter from "counter/useCounter";
 ) */
 
 cases(
-  "useCounter",
+  'useCounter',
   ({ step, initialCount, postIncrement, postDecrement }) => {
     const { result } = renderHook(useCounter, {
       initialProps: { initialCount, step },
@@ -36,7 +36,7 @@ cases(
       postIncrement: 2,
       postDecrement: 0,
     },
-    "initial count and step": {
+    'initial count and step': {
       initialCount: 5,
       step: 2,
       postIncrement: 7,

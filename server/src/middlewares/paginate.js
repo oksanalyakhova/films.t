@@ -1,5 +1,5 @@
 export default async (req, res, next) => {
-  const db = req.app.get("db");
+  const db = req.app.get('db');
   // Pagination result
   const page = parseInt(req.query.page, 10) || 1;
   const limit = parseInt(req.query.limit, 10) || 12;
@@ -11,7 +11,7 @@ export default async (req, res, next) => {
 
   const pagination = {};
 
-  await db.collection("films").estimatedDocumentCount({}, (err, total) => {
+  await db.collection('films').estimatedDocumentCount({}, (err, total) => {
     if (err) {
       res.status(500).json({ errors: { global: err } });
       return;

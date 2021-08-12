@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDeleteFilm } from "hooks/films";
+import { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useDeleteFilm } from 'hooks/films';
 
 const SelectButton = ({ film }) => {
   return (
@@ -16,7 +16,7 @@ const DeleteButton = ({ film }) => {
 
   const deleteFilm = () => {
     mutation.mutate(film);
-    history.push("/films");
+    history.push('/films');
   };
 
   return (

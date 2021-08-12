@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Message = ({ children, type, color }) => {
   return (
@@ -12,8 +12,8 @@ const Message = ({ children, type, color }) => {
 };
 
 Message.defaultProps = {
-  type: "info",
-  color: "olive",
+  type: 'info',
+  color: 'olive',
 };
 
 Message.propTypes = {

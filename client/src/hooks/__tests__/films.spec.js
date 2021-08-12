@@ -1,8 +1,8 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { useLoadFilms, useSaveFilm } from "hooks/films";
-import { AppProviders } from "contexts";
-import { QueryCache } from "react-query";
-import films from "test/films";
+import { renderHook } from '@testing-library/react-hooks';
+import { useLoadFilms, useSaveFilm } from 'hooks/films';
+import { AppProviders } from 'contexts';
+import { QueryCache } from 'react-query';
+import films from 'test/films';
 
 const queryCache = new QueryCache();
 
@@ -12,7 +12,7 @@ afterEach(() => {
 
 const wrapper = ({ children }) => <AppProviders>{children}</AppProviders>;
 
-test("should load all films", async () => {
+test('should load all films', async () => {
   const { result, waitFor } = renderHook(() => useLoadFilms(), { wrapper });
   await waitFor(() => result.current.isSuccess);
 
@@ -20,9 +20,9 @@ test("should load all films", async () => {
 });
 
 let firstFilm = { ...films[0] };
-firstFilm._id = "12345";
+firstFilm._id = '12345';
 
-test("should correct update film", async () => {
+test('should correct update film', async () => {
   const { result, waitFor } = renderHook(() => useSaveFilm(firstFilm), {
     wrapper,
   });
@@ -32,7 +32,7 @@ test("should correct update film", async () => {
   expect(result.current.data).toEqual(firstFilm);
 });
 
-test("should correct create film", async () => {
+test('should correct create film', async () => {
   const { result, waitFor } = renderHook(() => useSaveFilm(firstFilm), {
     wrapper,
   });

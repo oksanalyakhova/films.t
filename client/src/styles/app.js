@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { FaSpinner } from "react-icons/fa";
+import styled, { keyframes } from 'styled-components';
+import { FaSpinner } from 'react-icons/fa';
 
 const spin = keyframes`
  0% { transform: rotate(0deg)}
@@ -13,12 +13,12 @@ export function FullSpinner() {
   return (
     <div
       style={{
-        fontSize: "4em",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        fontSize: '4em',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Spinner aria-label="loading" />

@@ -1,6 +1,7 @@
-import sleep from "../utils/sleep";
+import sleep from '../utils/sleep';
 
-export default (ms = 1000) => async (req, res, next) => {
-  await sleep(ms);
-  next();
-};
+export default (ms = 1000) =>
+  async (req, res, next) => {
+    await sleep(ms);
+    next();
+  };

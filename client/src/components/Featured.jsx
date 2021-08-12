@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import { useToggleFeatured } from "hooks/films";
+import PropTypes from 'prop-types';
+import { useToggleFeatured } from 'hooks/films';
 
 const Featured = ({ film }) => {
   const mutation = useToggleFeatured();
 
-  const cls = film.featured ? "yellow" : "empty";
+  const cls = film.featured ? 'yellow' : 'empty';
 
   return (
     <span

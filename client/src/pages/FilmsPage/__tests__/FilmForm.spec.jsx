@@ -1,12 +1,12 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import FilmForm from "pages/FilmsPage/components/FilmForm";
-import films from "test/films";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { queryConfig } from "contexts";
-import { UserContextProvider } from "contexts/UserContext";
-import { MemoryRouter as Router } from "react-router-dom";
-import * as funcs from "hooks/films";
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import FilmForm from 'pages/FilmsPage/components/FilmForm';
+import films from 'test/films';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { queryConfig } from 'contexts';
+import { UserContextProvider } from 'contexts/UserContext';
+import { MemoryRouter as Router } from 'react-router-dom';
+import * as funcs from 'hooks/films';
 
 function wrapper({ children }) {
   const queryClient = new QueryClient(queryConfig);
@@ -19,24 +19,24 @@ function wrapper({ children }) {
   );
 }
 
-const mockUser = { token: "12345", role: "admin" };
+const mockUser = { token: '12345', role: 'admin' };
 const mockHistory = { push: jest.fn() };
 const mockFilm = films[0];
 const mockSaveFilm = jest.fn();
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useHistory: () => mockHistory,
 }));
 
-jest.mock("contexts/UserContext", () => ({
-  ...jest.requireActual("contexts/UserContext"),
+jest.mock('contexts/UserContext', () => ({
+  ...jest.requireActual('contexts/UserContext'),
   useUserState: () => mockUser,
 }));
 
-test("FilmForm should render correct", async () => {
-  jest.spyOn(funcs, "useEditFilm").mockImplementation(() => mockFilm);
-  jest.spyOn(funcs, "useSaveFilm").mockImplementation(() => ({
+test('FilmForm should render correct', async () => {
+  jest.spyOn(funcs, 'useEditFilm').mockImplementation(() => mockFilm);
+  jest.spyOn(funcs, 'useSaveFilm').mockImplementation(() => ({
     mutate: mockSaveFilm,
   }));
 
@@ -60,8 +60,8 @@ test("FilmForm should render correct", async () => {
   expect(mockSaveFilm).toHaveBeenCalledTimes(1);
 });
 
-test("should render FormMessage with error", async () => {
-  jest.spyOn(funcs, "useEditFilm").mockImplementation(() => ({ _id: null }));
+test('should render FormMessage with error', async () => {
+  jest.spyOn(funcs, 'useEditFilm').mockImplementation(() => ({ _id: null }));
   render(<FilmForm />, { wrapper });
 
   userEvent.type(screen.getByLabelText(/title/i), null);
@@ -79,6 +79,6 @@ test("should render FormMessage with error", async () => {
   const btnEl = screen.getByText(/save/i);
 
   await waitFor(() => userEvent.click(btnEl));
-  const formMsg = screen.getByRole("alert");
+  const formMsg = screen.getByRole('alert');
   expect(formMsg).toBeInTheDocument();
 });

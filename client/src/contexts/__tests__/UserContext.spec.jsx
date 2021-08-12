@@ -1,23 +1,23 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import { useLogin, useLogout, UserContextProvider } from "contexts/UserContext";
-import jwtDecode from "jwt-decode";
-import { setAuthorizationHeader } from "api";
+import { renderHook, act } from '@testing-library/react-hooks';
+import { useLogin, useLogout, UserContextProvider } from 'contexts/UserContext';
+import jwtDecode from 'jwt-decode';
+import { setAuthorizationHeader } from 'api';
 
 const wrapper = ({ children }) => (
   <UserContextProvider>{children}</UserContextProvider>
 );
 
-const mockToken = "12345";
-jest.mock("jwt-decode", () => jest.fn());
+const mockToken = '12345';
+jest.mock('jwt-decode', () => jest.fn());
 
-jest.mock("api");
+jest.mock('api');
 
 afterEach(() => {
   jest.resetAllMocks();
   delete localStorage.filmsToken;
 });
 
-test("useLogin should return function", async () => {
+test('useLogin should return function', async () => {
   jwtDecode.mockImplementation(() => ({ user: {} }));
   const { result } = renderHook(() => useLogin(), { wrapper });
 
@@ -30,7 +30,7 @@ test("useLogin should return function", async () => {
   expect(localStorage.filmsToken).toBe(mockToken);
 });
 
-test("logout should remove mockToken from localStorage", () => {
+test('logout should remove mockToken from localStorage', () => {
   jwtDecode.mockImplementation(() => ({ user: {} }));
   const { result } = renderHook(() => useLogout(), { wrapper });
 

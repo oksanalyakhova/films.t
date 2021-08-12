@@ -12,7 +12,9 @@ export default (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
-        res.status(401).json({ errors: { global: 'You must be authenticated to do that' } });
+        res
+          .status(401)
+          .json({ errors: { global: 'You must be authenticated to do that' } });
       } else {
         req.userId = new mongodb.ObjectId(decoded.user._id);
         next();

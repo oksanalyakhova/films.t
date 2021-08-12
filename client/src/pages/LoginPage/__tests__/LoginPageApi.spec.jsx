@@ -1,25 +1,25 @@
-import { MemoryRouter as Router } from "react-router-dom";
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import LoginPage from "pages/LoginPage";
-import { UserContextProvider } from "contexts/UserContext";
-import users from "test/users";
+import { MemoryRouter as Router } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import LoginPage from 'pages/LoginPage';
+import { UserContextProvider } from 'contexts/UserContext';
+import users from 'test/users';
 
-const fakeData = { email: "test@com.ua", password: "secret" };
+const fakeData = { email: 'test@com.ua', password: 'secret' };
 const mockToken = users[0].token;
 
 const mockLogin = jest.fn();
-jest.mock("contexts/UserContext", () => ({
+jest.mock('contexts/UserContext', () => ({
   useLogin: () => mockLogin,
 }));
 
 const mockHistory = { push: jest.fn() };
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useHistory: () => mockHistory,
 }));
 
-test("should correct render", async () => {
+test('should correct render', async () => {
   render(
     <Router>
       <LoginPage />
@@ -42,5 +42,5 @@ test("should correct render", async () => {
   expect(mockLogin).toHaveBeenCalledWith(mockToken);
 
   expect(mockHistory.push).toHaveBeenCalledTimes(1);
-  expect(mockHistory.push).toHaveBeenCalledWith("/films");
+  expect(mockHistory.push).toHaveBeenCalledWith('/films');
 });

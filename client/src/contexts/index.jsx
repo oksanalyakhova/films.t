@@ -1,8 +1,8 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { UserContextProvider } from "contexts/UserContext";
-import { FilmsContextProvider } from "contexts/FilmContext";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { UserContextProvider } from 'contexts/UserContext';
+import { FilmsContextProvider } from 'contexts/FilmContext';
 
 export const queryConfig = {
   defaultOptions: {

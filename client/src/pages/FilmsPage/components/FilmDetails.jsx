@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { FullSpinner } from "styles/app";
-import { useFetchFilm } from "hooks/films";
+import { useParams } from 'react-router-dom';
+import { FullSpinner } from 'styles/app';
+import { useFetchFilm } from 'hooks/films';
 
 const FilmDetails = () => {
   const { id } = useParams();

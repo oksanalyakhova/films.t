@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from "react";
-import axios from "axios";
-import useAsync from "hooks/useAsync";
-import { Spinner } from "styles/app";
+import { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
+import useAsync from 'hooks/useAsync';
+import { Spinner } from 'styles/app';
 
-const fakeImg = "http://via.placeholder.com/130x130";
-const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+const fakeImg = 'http://via.placeholder.com/130x130';
+const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const MAX_SIZE = 400000;
 
 const UploadImage = ({ img, updatePhoto }) => {
@@ -31,7 +31,7 @@ const UploadImage = ({ img, updatePhoto }) => {
 
     const tooLarge = file.size > MAX_SIZE;
     if (!allowedTypes.includes(file.type) || tooLarge) {
-      const msg = tooLarge ? "File too large" : "not alowed type";
+      const msg = tooLarge ? 'File too large' : 'not alowed type';
       setImgError(msg);
       return;
     }
@@ -44,9 +44,9 @@ const UploadImage = ({ img, updatePhoto }) => {
       return;
     }
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
     await run(
-      axios.post("/api/upload", formData).then(async (res) => {
+      axios.post('/api/upload', formData).then(async (res) => {
         updatePhoto(res.data.file);
         setRenderImg(res.data.file);
         setFile(null);

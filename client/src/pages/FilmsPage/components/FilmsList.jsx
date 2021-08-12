@@ -1,8 +1,8 @@
-import { memo } from "react";
-import FilmCard from "pages/FilmsPage/components/FilmCard";
-import Message from "components/Message";
-import { useLoadFilms } from "hooks/films";
-import { FullSpinner } from "styles/app";
+import { memo } from 'react';
+import FilmCard from 'pages/FilmsPage/components/FilmCard';
+import Message from 'components/Message';
+import { useLoadFilms } from 'hooks/films';
+import { FullSpinner } from 'styles/app';
 
 const FilmsList = () => {
   const { data: films, isLoading } = useLoadFilms();

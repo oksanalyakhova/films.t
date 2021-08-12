@@ -1,13 +1,13 @@
-import { createContext, useContext, useState, useCallback } from "react";
-import { prop, sortWith, ascend, descend } from "ramda";
-import _find from "lodash/find";
-import api from "api";
+import { createContext, useContext, useState, useCallback } from 'react';
+import { prop, sortWith, ascend, descend } from 'ramda';
+import _find from 'lodash/find';
+import api from 'api';
 
 export const FilmStateContext = createContext();
 export const FilmDispatchContext = createContext();
 
 const sortFilms = (films) =>
-  sortWith([descend(prop("featured")), ascend(prop("title"))], films);
+  sortWith([descend(prop('featured')), ascend(prop('title'))], films);
 
 export const FilmsContextProvider = ({ children }) => {
   const [films, setFilms] = useState([]);
@@ -23,7 +23,7 @@ export const FilmsContextProvider = ({ children }) => {
 export const useStateFilms = () => {
   const films = useContext(FilmStateContext);
   if (!films) {
-    throw Error("useStateFilms must be called within FilmsContextProvider");
+    throw Error('useStateFilms must be called within FilmsContextProvider');
   }
   return films;
 };
@@ -31,7 +31,7 @@ export const useStateFilms = () => {
 export const useDispatchFilms = () => {
   const setFilms = useContext(FilmDispatchContext);
   if (!setFilms) {
-    throw Error("useDispatchFilms must be called within FilmsContextProvider");
+    throw Error('useDispatchFilms must be called within FilmsContextProvider');
   }
   return setFilms;
 };

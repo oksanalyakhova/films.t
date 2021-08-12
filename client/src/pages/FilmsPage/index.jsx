@@ -1,11 +1,11 @@
-import { useLocation, Route } from "react-router-dom";
-import FilmsList from "pages/FilmsPage/components/FilmsList";
-import FilmForm from "pages/FilmsPage/components/FilmForm";
+import { useLocation, Route } from 'react-router-dom';
+import FilmsList from 'pages/FilmsPage/components/FilmsList';
+import FilmForm from 'pages/FilmsPage/components/FilmForm';
 
 const FilmsPage = () => {
   const location = useLocation();
 
-  const cls = location.pathname === "/films" ? "sixteen" : "ten";
+  const cls = location.pathname === '/films' ? 'sixteen' : 'ten';
 
   return (
     <div className="ui stackable grid">

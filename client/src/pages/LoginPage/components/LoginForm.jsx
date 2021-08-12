@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import isEmail from "validator/lib/isEmail";
-import FormMessage from "components/FormMessage";
-import setFormObj from "components/FormUtils";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import isEmail from 'validator/lib/isEmail';
+import FormMessage from 'components/FormMessage';
+import setFormObj from 'components/FormUtils';
 
 const initialData = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const LoginForm = ({ submit }) => {
@@ -16,8 +16,8 @@ const LoginForm = ({ submit }) => {
 
   const validate = (data) => {
     const errors = {};
-    if (!isEmail(data.email)) errors.email = "Email is not correct";
-    if (!data.password) errors.password = "Password cannot be blank";
+    if (!isEmail(data.email)) errors.email = 'Email is not correct';
+    if (!data.password) errors.password = 'Password cannot be blank';
 
     return errors;
   };
@@ -36,10 +36,10 @@ const LoginForm = ({ submit }) => {
     }
   };
 
-  const cls = loading ? "ui form loading" : "ui form";
+  const cls = loading ? 'ui form loading' : 'ui form';
   return (
     <form data-testid="login-form" className={cls} onSubmit={handleSubmit}>
-      <div className={errors.email ? "error field" : "field"}>
+      <div className={errors.email ? 'error field' : 'field'}>
         <label htmlFor="email">Email</label>
         <input
           value={data.email}
@@ -52,7 +52,7 @@ const LoginForm = ({ submit }) => {
         {errors.email && <FormMessage>{errors.email}</FormMessage>}
       </div>
 
-      <div className={errors.password ? "error field" : "field"}>
+      <div className={errors.password ? 'error field' : 'field'}>
         <label htmlFor="password">Password</label>
         <input
           value={data.password}

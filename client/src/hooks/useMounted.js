@@ -1,15 +1,15 @@
-import {useRef, useLayoutEffect} from "react"
+import { useRef, useLayoutEffect } from 'react';
 
 const useMounted = () => {
-  const mountedRef = useRef()
+  const mountedRef = useRef();
 
   useLayoutEffect(() => {
-    mountedRef.current = true
+    mountedRef.current = true;
     return () => {
-      mountedRef.current = false
-    }
-  }, [])
-  return mountedRef
-}
+      mountedRef.current = false;
+    };
+  }, []);
+  return mountedRef;
+};
 
-export default useMounted
+export default useMounted;

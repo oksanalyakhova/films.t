@@ -1,8 +1,8 @@
-import express from "express";
-import mongodb from "mongodb";
-import authenticate from "../middlewares/authenticate";
-import adminOnly from "../middlewares/adminOnly";
-import paginate from "../middlewares/paginate";
+import express from 'express';
+import mongodb from 'mongodb';
+import authenticate from '../middlewares/authenticate';
+import adminOnly from '../middlewares/adminOnly';
+import paginate from '../middlewares/paginate';
 
 const router = express.Router();
 
@@ -16,19 +16,19 @@ const validate = (data) => {
   if (!data.director) errors.director = "Director filed can't be blank";
   if (!data.duration) errors.duration = "Duration filed can't be blank";
   if (!data.img) errors.img = "This field can't be blank";
-  if (data.price <= 0) errors.price = "Wrong price";
+  if (data.price <= 0) errors.price = 'Wrong price';
   if (data.duration <= 0)
-    errors.duration = "Duration must be only positove value";
+    errors.duration = 'Duration must be only positove value';
 
   return errors;
 };
 
-router.get("/", paginate, async (req, res) => {
-  const db = req.app.get("db");
+router.get('/', paginate, async (req, res) => {
+  const db = req.app.get('db');
   const { startIndex, limit } = res.locals;
 
   await db
-    .collection("films")
+    .collection('films')
     .find({})
     .skip(startIndex)
     .limit(limit)
@@ -41,9 +41,9 @@ router.get("/", paginate, async (req, res) => {
     });
 });
 
-router.get("/:_id", (req, res) => {
-  const db = req.app.get("db");
-  db.collection("films").findOne(
+router.get('/:_id', (req, res) => {
+  const db = req.app.get('db');
+  db.collection('films').findOne(
     { _id: new mongodb.ObjectId(req.params._id) },
     (err, film) => {
       if (err) {
@@ -56,12 +56,12 @@ router.get("/:_id", (req, res) => {
   );
 });
 
-router.post("/", authenticate, adminOnly, (req, res) => {
-  const db = req.app.get("db");
+router.post('/', authenticate, adminOnly, (req, res) => {
+  const db = req.app.get('db');
   const errors = validate(req.body.film);
 
   if (Object.keys(errors).length === 0) {
-    db.collection("films").insertOne(req.body.film, (err, r) => {
+    db.collection('films').insertOne(req.body.film, (err, r) => {
       if (err) {
         res.status(500).json({ errors: { global: err } });
         return;
@@ -74,13 +74,13 @@ router.post("/", authenticate, adminOnly, (req, res) => {
   }
 });
 
-router.put("/:_id", authenticate, adminOnly, (req, res) => {
-  const db = req.app.get("db");
+router.put('/:_id', authenticate, adminOnly, (req, res) => {
+  const db = req.app.get('db');
   const { _id, ...filmData } = req.body.film;
   const errors = validate(filmData);
 
   if (Object.keys(errors).length === 0) {
-    db.collection("films").findOneAndUpdate(
+    db.collection('films').findOneAndUpdate(
       { _id: new mongodb.ObjectId(req.params._id) },
       { $set: filmData },
       { returnOriginal: false },
@@ -98,10 +98,10 @@ router.put("/:_id", authenticate, adminOnly, (req, res) => {
   }
 });
 
-router.delete("/:_id", authenticate, adminOnly, (req, res) => {
-  const db = req.app.get("db");
+router.delete('/:_id', authenticate, adminOnly, (req, res) => {
+  const db = req.app.get('db');
 
-  db.collection("films").deleteOne(
+  db.collection('films').deleteOne(
     { _id: new mongodb.ObjectId(req.params._id) },
     (err) => {
       if (err) {

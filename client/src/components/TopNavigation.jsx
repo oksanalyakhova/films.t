@@ -1,11 +1,11 @@
-import { memo } from "react";
-import { NavLink } from "react-router-dom";
-import { useUserState, useLogout } from "contexts/UserContext";
+import { memo } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useUserState, useLogout } from 'contexts/UserContext';
 
 const TopNavigation = () => {
   const user = useUserState();
   const logout = useLogout();
-  const isAdmin = user.token && user.role === "admin";
+  const isAdmin = user.token && user.role === 'admin';
   const isAuth = !!user.token;
 
   return (
